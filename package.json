@@ -1,0 +1,39 @@
+{
+  "name": "reactStudy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./server.js",
+    "bundle": "babel-node tools/run bundle",
+    "build": "webpack --progress --colors --watch -p",
+    "dev": "webpack-dev-server --devtool eval --progress --colors --watch -p --content-base build"
+  },
+  "keywords": [],
+  "author": "chenyudong",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "baobab": "^2.3.4",
+    "clean-webpack-plugin": "^0.1.14",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-webpack-plugin": "^2.24.1",
+    "jquery": "^3.1.1",
+    "jsx-loader": "^0.13.2",
+    "open-browser-webpack-plugin": "^0.0.3",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "react-redux": "^4.4.6",
+    "redux": "^3.6.0",
+    "redux-devtools": "^3.3.1"
+  }
+}
