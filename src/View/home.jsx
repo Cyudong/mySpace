@@ -1,15 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import * as actionCreators from './Action/action-creators'
+import * as actionCreators from '../Action/action-creators'
 
 class Home extends React.Component {
+
   onTimeButtonClick (delay) {
    this.props.dispatch(actionCreators.getTime(delay))
   }
+
+  onTestBtnClick() {
+    this.props.dispatch(actionCreators.getTest())
+  }
+
   render () {
 
     // Thanks to "connect", we're able to get specific selected data, through the props.
-    var { frozen, time, reduxState } = this.props
+    var { frozen, time, reduxState, test } = this.props
     var attrs = {}
     const DELAY = 500 // in ms
 
@@ -32,6 +38,7 @@ class Home extends React.Component {
         </i>
         <br />
         <button { ...attrs } onClick={() => this.onTimeButtonClick(DELAY)}>Get time!</button>
+        <button { ...attrs } onClick={() => this.onTestBtnClick()}>TEST !</button>
         <pre>
           redux state = { JSON.stringify(reduxState, null, 2) }
         </pre>
@@ -41,6 +48,7 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = (state/*, props*/) => {
+  
   return {
     frozen: state._time.frozen,
     time: state._time.time,

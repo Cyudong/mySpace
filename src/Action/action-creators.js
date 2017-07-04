@@ -19,3 +19,22 @@ export function getTime(delay) {
     }
   }
 }
+
+export function getTest() {
+  return {
+    types: ['CREATE_STORE', 'CREATE_STORE_SUCCESS', 'CREATE_STORE_FAILURE'],
+    promise: () => {
+      return new Promise((resolve, reject) => {
+        // Just simulating an async request to a server via a setTimeout
+        // setTimeout(() => {
+        //   const d = new Date()
+        //   const ms = ('000' + d.getMilliseconds()).slice(-3)
+          resolve({
+            name: 'test',
+            id: 123
+          })
+      //   }, delay)
+      })
+    }
+  }
+}
