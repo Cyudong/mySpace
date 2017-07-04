@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
-import createStore from './create-store'
-import Application from './application'
+import createStore from './Store/create-store'
+import Application from './View/application'
 
 const store = createStore()
 
