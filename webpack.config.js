@@ -2,7 +2,7 @@ var webpack = require('webpack');
 module.exports = {
     entry: [
       'webpack/hot/only-dev-server',
-      "./src/js/app.js"
+      "./src/index.jsx"
     ],
     output: {
         path: './build',
@@ -10,13 +10,13 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.js?$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/ },
-            { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
+            { test: /\.(js|jsx)?$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/ },
+            { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'babel-loader'},
             { test: /\.css$/, loader: "style!css" }
         ]
     },
     resolve:{
-        extensions:['','.js','.json']
+        extensions:['','.js','.jsx','.css','.json']
     },
     plugins: [
       new webpack.NoErrorsPlugin()

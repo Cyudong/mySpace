@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import * as actionCreators from './action-creators'
+import * as actionCreators from './Action/action-creators'
 
 class Home extends React.Component {
   onTimeButtonClick (delay) {
@@ -28,7 +28,7 @@ class Home extends React.Component {
         <br /> <br />
         <i>
           When clicking the button below, the time will be provided after a {DELAY}ms delay.<br />
-          Try to change this value (in <b>src/home.jsx - line 77</b>) to verify that the delay given correctly impacts our UI.
+          Try to change this value (in <b>src/home.jsx - line 14</b>) to verify that the delay given correctly impacts our UI.
         </i>
         <br />
         <button { ...attrs } onClick={() => this.onTimeButtonClick(DELAY)}>Get time!</button>
@@ -44,7 +44,7 @@ const mapStateToProps = (state/*, props*/) => {
   return {
     frozen: state._time.frozen,
     time: state._time.time,
-     reduxState: state,
+    reduxState: state,
   }
 }
 
