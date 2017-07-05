@@ -19,3 +19,26 @@ export function getTime(delay) {
     }
   }
 }
+
+// this value to verify that the delay correctly impacts our UI.
+export function getTest() {
+  return {
+    types: ['GET_TEST_SUCCESS', 'GET_TEST_FAILURE'],
+    promise: () => {
+      return new Promise((resolve, reject) => {
+        resolve({
+          data: [
+            {
+              name: 'test name 1',
+              id: 1
+            },
+            {
+              name: 'test name 2',
+              id: 2
+            }
+          ]
+        })
+      })
+    } 
+  }
+}
