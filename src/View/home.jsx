@@ -8,8 +8,9 @@ class Home extends React.Component {
    this.props.dispatch(actionCreators.getTime(delay))
   }
 
-  onTestBtnClick() {
-    this.props.dispatch(actionCreators.getTest())
+  onTestBtnClick () {
+  //  this.props.dispatch({type: 'GET_TEST_SUCCESS'})
+   this.props.dispatch(actionCreators.getTest())
   }
 
   render () {
@@ -50,8 +51,9 @@ class Home extends React.Component {
 const mapStateToProps = (state/*, props*/) => {
   
   return {
-    frozen: state._time.frozen,
-    time: state._time.time,
+    frozen: state.time.frozen,
+    time: state.time.time,
+    test: state.test,
     reduxState: state,
   }
 }

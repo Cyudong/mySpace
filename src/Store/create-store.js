@@ -1,12 +1,10 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux'
-import promiseMiddleware from '../Reducer/promise-middleware'
-import * as reducers from '../Reducer/reducers'
-import * as reducerTest from '../Reducer/reducer-test'
+import { createStore, applyMiddleware } from 'redux'
+import promiseMiddleware from '../Action/promise-middleware'
+import reducers from '../Reducer/reducers'
 
-export default function(data) {
-  var reducer = combineReducers(reducers, reducerTest)
+export default function (data) {
   var finalCreateStore = applyMiddleware(promiseMiddleware)(createStore)
-  var store = finalCreateStore(reducer, data)
+  var store = finalCreateStore(reducers, data)
 
   return store
 }
