@@ -1,0 +1,11 @@
+.idea/
+node_modules/
+node-debug.log
+npm-debug.log
+.DS_Store
+**/*.swp
+**/*.swo
+coverage/
+.happypack/
+.vscode
+/build
