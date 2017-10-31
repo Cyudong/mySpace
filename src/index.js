@@ -1,6 +1,7 @@
 // 这是项目的核心文件。全局的配置都在这个文件里面配置
 import Vue from 'vue'
 import VueResource from 'vue-resource'
+import TodoItem from './moudle.js'
 // import App from './app.vue'
 // import router from './router.js'
 // import './assets/less/index.less'
