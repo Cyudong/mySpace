@@ -1,5 +1,8 @@
 var path = require('path')
 var webpack = require('webpack')
+var Dashboard = require('webpack-dashboard');
+var DashboardPlugin = require('webpack-dashboard/plugin');
+var dashboard = new Dashboard();
 
 module.exports = {
     entry: './src/index.js',//值可以是字符串、数组或对象
@@ -47,15 +50,20 @@ module.exports = {
             'vue$': 'vue/dist/vue.esm.js'
         }
     },
-    devServer: {//webpack-dev-server配置
-        historyApiFallback: true,//不跳转
+    devServer: { //webpack-dev-server配置
+        historyApiFallback: true, //不跳转
         noInfo: true,
-        inline: true//实时刷新
+        inline: true, //实时刷新
+        hot: true,
+        quiet: true, // lets WebpackDashboard do its thing
     },
     performance: {
         hints: false
     },
-    devtool: '#eval-source-map'
+    devtool: '#eval-source-map',
+    plugins: [
+        new DashboardPlugin(dashboard.setData)
+    ]
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -75,6 +83,7 @@ if (process.env.NODE_ENV === 'production') {
         }),
         new webpack.LoaderOptionsPlugin({
             minimize: true
-        })
+        }),
+        // new DashboardPlugin(dashboard.setData)
     ])
 }
