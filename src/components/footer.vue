@@ -1,5 +1,5 @@
 <template>
-<div class="nav-box">
+    <div class="nav-box">
         <p class="nav-list">
             <router-link class="nav-item" to="/">
                 <i :class= "[home?'index1':'index']"></i>
@@ -8,7 +8,7 @@
                 <i :class= "[my?'my1':'my']"></i>
             </router-link>
         </p>
-</div>
+    </div>
 </template>
 <script>
     export default{
