@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",  
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --hot --progress --colors --port 3000",
     "build": "webpack --progress --colors"
   },
@@ -31,7 +31,7 @@
     "webpack-dev-server": "^1.11.0"
   },
   "dependencies": {
-    "lodash": "~3.10.1",
+    "lodash": "^3.10.1",
     "react-kendo": "~0.13.11"
   }
 }
