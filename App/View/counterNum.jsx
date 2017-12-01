@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import _ from 'lodash';
+import * as Actions from '../action/actions.js';
 
 const BtnStyle = {
     "marginRight": "10px",
@@ -21,17 +22,17 @@ class CounterNum extends Component {
     }
 
     _onIncrement() {
-        let { name, count, onChange } = this.props;
-        onChange('increment', name)
+        let { name } = this.props;
+        Actions.increment(name);
     }
 
     _onDecrement() {
-        let { name, count, onChange } = this.props;
-        onChange('decrement', name)
+        let { name } = this.props;
+        Actions.decrement(name);
     }
 
     render() {
-        let { name, count, onChange } = this.props;
+        let { name, count } = this.props;
         return (
             <div style={DivStyle}>
                 <button style={BtnStyle} onClick={this._onIncrement}>+</button>    
@@ -45,14 +46,12 @@ class CounterNum extends Component {
 
 CounterNum.proptypes = {
     name: PropTypes.string.isRequired,
-    count: PropTypes.number,
-    onChange: PropTypes.fuc
+    count: PropTypes.number
 }
 
 CounterNum.defaultProps = {
     name: 'default',
-    count: 0,
-    onChange: ()=>{}
+    count: 0
 }
 
 export default CounterNum;

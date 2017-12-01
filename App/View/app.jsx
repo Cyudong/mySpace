@@ -3,6 +3,8 @@ import React from 'react';
 import _ from 'lodash';
 import CounterNum from './counterNum.jsx';
 import TotalNum from './totalNum.jsx';
+// import AppStore from '../store/AppStore.js';
+import CounterStore from '../store/CounterStore.js';
 
 export default class Application extends React.Component {
   constructor(props) {
@@ -11,20 +13,39 @@ export default class Application extends React.Component {
       "_getTotalCount",
       "_onChangeCount",
       "_onIncrementCount",
-      "_onDecrementCount"
+      "_onDecrementCount",
+      "_onStoreChange"
     ]);
+    // this.state = {
+    //   counters: [
+    //     {
+    //       name: "First",
+    //       count: 0
+    //     },
+    //     {
+    //       name: "Secont",
+    //       count: 0
+    //     }
+    //   ]
+    // }
     this.state = {
-      counters: [
-        {
-          name: "First",
-          count: 0
-        },
-        {
-          name: "Secont",
-          count: 0
-        }
-      ]
+      counters: CounterStore.getCounterValues()
     }
+  }
+
+  componentDidMount() {
+    CounterStore.addChangeListener(this._onStoreChange);
+  }
+
+  componentWillUnmount() {
+    CounterStore.removeChangeListener(this._onStoreChange)
+  }
+
+  _onStoreChange() {
+    const newStore = CounterStore.getCounterValues();
+    this.setState({
+      counters: newStore
+    });
   }
 
   _getTotalCount() {
@@ -84,11 +105,10 @@ export default class Application extends React.Component {
           counters.map((obj, index) => {
             return (<CounterNum key={index}
               name={obj.name} count={obj.count}
-              onChange={this._onChangeCount}
             />);
           })
         }
-        <TotalNum count={this._getTotalCount()} />
+        <TotalNum />
       </div>
     )
   }

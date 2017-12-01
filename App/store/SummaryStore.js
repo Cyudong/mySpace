@@ -1,5 +1,6 @@
 import Dispatcher from '../dispatcher/dispatch.js';
 import * as ActionTypes from '../action/actionTypes.js';
+// import AppStore from './AppStore.js';
 import CounterStore from './CounterStore.js';
 import { EventEmitter } from 'events';
 
@@ -7,16 +8,15 @@ const CHANGE_EVENT = 'changed';
 
 function computeSummary(counterValues) {
     let summary = 0;
-    for (const key in counterValues) {
-        if (counterValues.hasOwnProperty(key)) {
-            summary += counterValues[key];
-        }
+    for (let index in counterValues) {
+        summary += counterValues[index].count;
     }
     return summary;
 }
 
 const SummaryStore = Object.assign({}, EventEmitter.prototype, {
     getSummary: function () {
+        // console.log('b' + computeSummary(CounterStore.getCounterValues()))
         return computeSummary(CounterStore.getCounterValues());
     },
 
