@@ -32,6 +32,8 @@
   },
   "dependencies": {
     "lodash": "^3.10.1",
-    "react-kendo": "~0.13.11"
+    "react-kendo": "~0.13.11",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2"
   }
 }
