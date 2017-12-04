@@ -8,7 +8,6 @@ export default (state, action) => {
             for (let obj of counterValues) {
                 if (obj.name === name) {
                     obj.count += 1;
-                    // return { ...obj, count: obj.count + 1 };
                 }
             }
             return state;
