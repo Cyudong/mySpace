@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import _ from 'lodash';
-import AppStore from '../store/AppStore.js'; // redux
+// import AppStore from '../store/AppStore.js'; // redux
 
 class TotalNum extends Component {
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(props, context);
         _.bindAll(this, [
             "_onStoreChange",
             "_getTotalCount"
@@ -15,11 +15,11 @@ class TotalNum extends Component {
     } 
 
     componentDidMount() {
-        AppStore.subscribe(this._onStoreChange);
+        this.context.store.subscribe(this._onStoreChange);
     }
 
     componentWillUnmount() {
-        AppStore.unsubscribe(this._onStoreChange);
+        this.context.store.unsubscribe(this._onStoreChange);
     }
 
     _onStoreChange() {
@@ -29,7 +29,7 @@ class TotalNum extends Component {
     }
 
     _getTotalCount() {
-        let newState = AppStore.getState();
+        let newState = this.context.store.getState();
         let counterValues = newState.counterValues,
             summary = 0;
         for (let index in counterValues) {
@@ -47,6 +47,10 @@ class TotalNum extends Component {
             </div>
         )
     }
+}
+
+TotalNum.contextTypes = {
+    store: PropTypes.object
 }
 
 // TotalNum.propTypes = {

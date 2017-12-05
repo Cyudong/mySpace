@@ -3,6 +3,7 @@ import _ from 'lodash';
 import CounterNum from './counterNum.jsx';
 import TotalNum from './totalNum.jsx';
 import AppStore from '../store/AppStore.js'; // redux
+import Provider from './provider.jsx'; 
 
 export default class Application extends React.Component {
   constructor(props) {
@@ -93,7 +94,7 @@ export default class Application extends React.Component {
     let { counters } = this.state;
 
     return (
-      <div>
+      <Provider store={AppStore} >
         {
           counters.map((obj, index) => {
             return (<CounterNum key={index}
@@ -102,7 +103,7 @@ export default class Application extends React.Component {
           })
         }
         <TotalNum />
-      </div>
+      </Provider>
     )
   }
 }

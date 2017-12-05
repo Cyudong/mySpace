@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import _ from 'lodash';
 import * as Actions from '../action/actions.js';
-import AppStore from '../store/AppStore.js'; // redux
+// import AppStore from '../store/AppStore.js'; // redux
 
 const BtnStyle = {
     "marginRight": "10px",
@@ -14,8 +14,8 @@ const DivStyle = {
 }
 
 class CounterNum extends Component {
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(props, context);
         _.bindAll(this, [
             "_onIncrement",
             "_onDecrement"
@@ -24,12 +24,12 @@ class CounterNum extends Component {
 
     _onIncrement() {
         let { name } = this.props;
-        AppStore.dispatch(Actions.increment(name));
+        this.context.store.dispatch(Actions.increment(name));
     }
 
     _onDecrement() {
         let { name } = this.props;
-        AppStore.dispatch(Actions.decrement(name));
+        this.context.store.dispatch(Actions.decrement(name));
     }
 
     render() {
@@ -43,6 +43,10 @@ class CounterNum extends Component {
             </div>
         )
     }
+}
+
+CounterNum.contextTypes = {
+    store: PropTypes.object
 }
 
 CounterNum.proptypes = {
