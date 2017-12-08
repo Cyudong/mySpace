@@ -3,7 +3,8 @@ module.exports = {
     entry: [
       'webpack/hot/only-dev-server',
     //   "./src/index.jsx"
-      "./App-redux/index.jsx"
+    //   "./App-redux/index.jsx"
+      "./App-react-redux/index.jsx"
     ],
     output: {
         path: './build',
